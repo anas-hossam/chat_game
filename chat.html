@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat Application</title>
+</head>
+<body>
+	<header>
+		<h1>Welcome to my chat room</h1>
+	</header>
+	<section id="chat-body">
+
+	</section>
+	<section id="chat-action">
+		<label for="name">name</label> <input id="name" type="text" name="name" value=""><br/>
+		<input id="message" type="text" name="msg" value="">
+		<select class="" name="">
+		<option value="0">All</option>
+		</select>
+	 	<button id="send" onclick="sendMessage()">send</button><br/>
+		<textarea id="chatArea"  name="area" rows="8" cols="40"></textarea>
+
+	</section>
+	<script>
+		var socket = new WebSocket('ws://localhost:8888/chat')
+		socket.addEventListener('message', function(e){
+			var area= document.getElementById('chatArea')
+			area.append(e.data)
+			console.log(e.data)
+		})
+		function sendMessage(){
+			var name= document.getElementById('name')
+			var inp = document.getElementById('message')
+			socket.send(name.value+' : '+inp.value+'\n')
+			inp.value=''
+		}
+	</script>
+</body>
+</html>
