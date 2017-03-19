@@ -47,6 +47,7 @@ class SignUp(tornado.web.RequestHandler):
 class Login(tornado.web.RequestHandler):
     def get(self):
         self.render('templates/login.html')
+        print("login fun")
 
     def post(self):
         name = self.get_argument("name")
@@ -54,6 +55,7 @@ class Login(tornado.web.RequestHandler):
 
         selectLogin = ''' select name from users where name = '%s' ''' % (name);
         res = _execute(selectLogin)
+        print("login fun")
 
         if len(res) == 0:
             self.write("success")

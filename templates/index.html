@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat Game</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <script src="../scripts/bootstrap.js"></script>
+</head>
+<body style="padding: 15px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Chat Game</a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav  navbar-nav">
+                                <li class="active"><a href="#home" data-toggle="tab" >Home <span class="sr-only">(current)</span></a></li>
+                                <li><a href="#groups" data-toggle="tab" >Groups</a></li>
+                                <li><a href="#people" data-toggle="tab" >People</a></li>
+                            </ul>
+                            <!--<form class="navbar-form navbar-left">-->
+                                <!--<div class="form-group">-->
+                                    <!--<input type="text" class="form-control" placeholder="Search">-->
+                                <!--</div>-->
+                                <!--<button type="submit" class="btn btn-default">Submit</button>-->
+                            <!--</form>-->
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Username <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+
+                    </div><!-- /.container-fluid -->
+
+                </nav>
+                <div class="tab-content">
+                <div id="home" style="padding: 15px;" class="tab-pane   active table-bordered">
+
+                    <div class="page-header">
+                        <h1>leader Board</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="thumbnail text-center">
+                            <img src="../images/b_black.png" width="150" height="150" alt="">
+                                <div class="caption ">
+                                    <h3>Super Friend</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="thumbnail text-center">
+                                <img src="../images/b_black.png" width="150" height="150" alt="">
+                                <div class="caption ">
+                                    <h3>Party Man</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="thumbnail text-center">
+                                <img src="../images/b_black.png" width="150" height="150" alt="">
+                                <div class="caption ">
+                                    <h3>Chatty One</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="thumbnail text-center">
+                                <img src="../images/b_black.png" width="150" height="150" alt="">
+                                <div class="caption ">
+                                    <h3>Public Figure</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                        <ul class="list-group">
+                            <li class="list-group-item">Blum</li>
+                            <li class="list-group-item">Grum</li>
+                            <li class="list-group-item">Dumpo</li>
+                            <li class="list-group-item">Lolita</li>
+                        </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">Blum</li>
+                                <li class="list-group-item">Grum</li>
+                                <li class="list-group-item">Dumpo</li>
+                                <li class="list-group-item">Lolita</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">Blum</li>
+                                <li class="list-group-item">Grum</li>
+                                <li class="list-group-item">Dumpo</li>
+                                <li class="list-group-item">Lolita</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">Blum</li>
+                                <li class="list-group-item">Grum</li>
+                                <li class="list-group-item">Dumpo</li>
+                                <li class="list-group-item">Lolita</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="groups" style="padding: 15px;" class="tab-pane fade table-bordered ">
+                    <div class="page-header">
+                            <button class="btn btn-primary pull-right ">Create Group</button>
+                        <h1>All Groups</h1>
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+
+                        <div class="col-sm-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/b_black.png" width="100" height="100" alt="">
+                                <div class="caption ">
+                                    <h3><a href="#group_room" data-toggle="tab" >Eqra2</a></h3>
+                                    <h5><a href="">leave</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/b_black.png" width="100" height="100" alt="">
+                                <div class="caption ">
+                                    <h3><a  href="#group_room" data-toggle="tab">Ezra3</a></h3>
+                                    <h5><a href="">leave</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-header">
+                        <h1>My Groups</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/b_black.png" width="100" height="100" alt="">
+                                <div class="caption ">
+                                    <h3><a  href="#group_room" data-toggle="tab">Party</a></h3>
+                                    <h5><a href="">join</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="people" style="padding: 15px;" class="tab-pane fade ">
+                    <div class="page-header">
+                        <h1>All People</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/b_black.png" width="100" height="100" alt="">
+                                <div class="caption ">
+                                    <h3><a  href="#private_room" data-toggle="tab">Dumbo</a></h3>
+                                    <h5><a href="">remove</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/b_black.png" width="100" height="100" alt="">
+                                <div class="caption ">
+                                    <h3><a href="#private_room" data-toggle="tab">hazeen</a></h3>
+                                    <h5><a href="">remove</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-header">
+                        <h1>My People</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/b_black.png" width="100" height="100" alt="">
+                                <div class="caption ">
+                                    <h3><a href="#private_room" data-toggle="tab">Eih</a></h3>
+                                    <h5><a href="">add</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- GROUP CHAT ROOM -->
+                <div id="group_room" class="tab-pane fade">
+                    <div class="page-header">
+                        <a href="#" class="pull-right ">leave</a>
+                        <h1><img src="../images/b_black.png" width="50" height="50" alt="">Eqra2</h1>
+
+                    </div>
+                </div>
+                    <!--  PRIVATE CHAT ROOM -->
+                    <div id="private_room" class="tab-pane fade">
+                        hiiiiiiiiii Private
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
