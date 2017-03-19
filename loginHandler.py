@@ -27,14 +27,15 @@ class SignUp(tornado.web.RequestHandler):
         self.render('templates/signUp.html')
 
     def post(self):
-        name = self.get_argument("name")
-        password = self.get_argument("pass")
+        name = str(self.get_argument("name"))
+        password = str(self.get_argument("pass"))
 
         select = ''' select name from users where name = '%s' ''' % (name);
         res = _execute(select)
 
         if len(res) == 0:
             query = ''' insert into users (name , password) values (%s , %s) ''' % ( "'" + name + "'", "'" + password + "'");
+            # query = ''' insert into users (name , password) values (%s , %s) ''' % (name , password );
             print(query)
             _execute(query)
             self.render('templates/index.html')
@@ -47,7 +48,6 @@ class SignUp(tornado.web.RequestHandler):
 class Login(tornado.web.RequestHandler):
     def get(self):
         self.render('templates/login.html')
-        print("login fun")
 
     def post(self):
         name = self.get_argument("name")
@@ -83,7 +83,7 @@ application = tornado.web.Application([
     (r"/login",Login),
     (r"/create" ,SignUp),
     (r"/show",ShowUsers),
-],debug=True)
+],static_path='scripts',debug=True)
 
 if __name__ == "__main__":
     application.listen(8888)
