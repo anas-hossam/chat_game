@@ -43,7 +43,6 @@ class ChatHandler(websocket.WebSocketHandler):
         names.remove(self.name)
         offline_ids.append(self.id)
 
-mypath="/home/azhary/chat_game"
 app = web.Application([
 		(r"/", MainHandler),
 		(r'/chat',ChatHandler)]
