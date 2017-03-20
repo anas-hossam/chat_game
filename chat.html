@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat Application</title>
+</head>
+<body>
+	<header>
+		<h1>Welcome to my chat room</h1>
+		  <script src="{{static_url('jquery-3.1.1.js')}}"></script>
+	</header>
+	<section id="chat-body">
+
+	</section>
+	<section id="chat-action">
+		<label for="name">name</label> <input id="name" type="text" name="name" value=""><br/>
+		<input id="message" type="text" name="message" value="">
+		<select id="sel" name="">
+			<option value="0">All</option>
+		</select>
+	 	<button id="send" onclick="sendMessage()">send</button><br/>
+		<textarea id="chatArea"  name="area" rows="8" cols="40"></textarea>
+
+	</section>
+	<script>
+	current_client=0;
+	flagTogetId_firstTime_only=0;
+	var socket = new WebSocket('ws://127.0.0.1:8881/chat')
+	socket.addEventListener('message', function(e){
+			var area= document.getElementById('chatArea')
+			myData=JSON.parse(e.data);
+			flagToAppend=0;
+			if (flagTogetId_firstTime_only) {
+					current_client=myData.id;
+					flagTogetId_firstTime_only=0
+			}
+		//-----------append message to text area-------------------
+			if (current_client==myData.sender_id ||current_client==myData.receiver_id ||myData.receiver_id==0 ) {
+				area.append(myData.name+":"+myData.message);
+			}
+		//-----------to remove offline user from list---------------------
+			$.each($('option'),function (indx,item) {
+				for (var i = 0; i < myData.offline_ids.length; i++) {
+					if (parseInt(item.value)==myData.offline_ids[i]) {
+						item.remove()
+					}
+				}
+			})
+	//------------to add oline users in list-------------------
+	for (var i = 0; i < myData.online_ids.length; i++) {
+					for (var j = 0; j < $('option').length; j++) {
+							if (parseInt($('option')[j].value)==myData.online_ids[i]) {
+								flagToAppend=1;
+								break;
+							}
+					}
+					if(flagToAppend==0){
+							$('#sel').append("<option value="+myData.online_ids[i]+">"+myData.names[i]+"</option>");
+						}
+						flagToAppend=0;
+		  }
+		console.log(myData)
+	})
+	//----------function to handel data from client to server-------------
+		function sendMessage(){
+			flagTogetId_firstTime_only=1
+			var name= document.getElementById('name')
+			var message = document.getElementById('message')
+			var receiver=parseInt($('#sel option:selected').val())
+			var obj = { "name":name.value, "message":message.value+'\n',"sender_id":current_client,"receiver_id":receiver};
+			myJSON = JSON.stringify(obj);
+			socket.send(myJSON)
+			message.value=''
+		}
+	</script>
+</body>
+</html>
