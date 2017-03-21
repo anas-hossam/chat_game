@@ -4,8 +4,17 @@ from connectDB import _execute
 
 
 class Main(tornado.web.RequestHandler):
+    def get_current_user(self):
+        return self.get_secure_cookie("user")
+
+
     def get(self):
-        self.write("Main")
+        if not self.current_user:
+            self.redirect("/login")
+            return
+        username = self.current_user
+        self.render('templates/index.html')
+        return username
 
 
 # Sign Up
@@ -22,14 +31,13 @@ class SignUp(tornado.web.RequestHandler):
 
         if len(res) == 0:
             query = ''' insert into users (name , password) values (%s , %s) ''' % ( "'" + name + "'", "'" + password + "'");
-            # query = ''' insert into users (name , password) values (%s , %s) ''' % (name , password );
             print(query)
             _execute(query)
-            self.render('templates/index.html')
-            # self.redirect('templates/index.html')
+            self.render('templates/login.html')
 
         else:
             self.write("Sorry, Duplicated name, please enter another name !")
+        self.render('templates/signUp.html')
 
 # Login
 class Login(tornado.web.RequestHandler):
@@ -39,17 +47,24 @@ class Login(tornado.web.RequestHandler):
     def post(self):
         name = self.get_argument("name")
         password = self.get_argument("pass")
+        self.set_secure_cookie("name", name[1])
 
-        selectLogin = ''' select name from users where name = '%s' ''' % (name);
-        res = _execute(selectLogin)
-        print("login fun")
+        query = ''' select name from users where name = '%s' and password = '%s' ''' % (name,password);
+        res = _execute(query)
 
         if len(res) == 0:
-            self.write("success")
-            # self.render('templates/index.html')
+            self.write("Incorrect Username or Password!!")
+            self.render('templates/login.html')
 
         else:
-            self.write("Incorrect Data!!")
+            self.set_secure_cookie("user", self.get_argument("name"))
+            self.redirect("/")
+
+#logout
+class Logout(tornado.web.RequestHandler):
+    def get(self):
+        self.clear_cookie("name")
+        self.redirect("/")
 
 
 #select all users
